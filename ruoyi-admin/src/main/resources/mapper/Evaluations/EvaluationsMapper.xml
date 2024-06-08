@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.EvaluationsMapper">
+    
+    <resultMap type="EvaluationsList" id="EvaluationsResult">
+        <result property="id"    column="id"    />
+        <result property="reviewerName"    column="reviewer_name"    />
+        <result property="implementScore"    column="implement_score"    />
+        <result property="planningScore"    column="planning_score"    />
+        <result property="videoScore"    column="video_score"    />
+        <result property="trainingScore"    column="training_score"    />
+        <result property="standardsScore"    column="standards_score"    />
+        <result property="score"    column="score"    />
+        <result property="link"    column="link"    />
+        <result property="textbookScore"    column="textbook_score"    />
+        <result property="suggest"    column="suggest"    />
+        <result property="school"    column="school"    />
+        <result property="title"    column="title"    />
+        <result property="author"    column="author"    />
+    </resultMap>
+
+    <sql id="selectEvaluationsVo">
+        select id, work_id, account_id, reviewer_name, implement_score, planning_score, video_score, training_score, standards_score, link, textbook_score, suggest from evaluations
+    </sql>
+    <sql id="selectEvaluationsAccountsWorksVo">
+        select evaluations.id,school,title,author, reviewer_name, implement_score, planning_score, video_score, training_score, standards_score, works.score, evaluations.link, textbook_score, suggest from evaluations
+        LEFT JOIN accounts ON evaluations.account_id=accounts.id
+        LEFT JOIN works ON evaluations.work_id=works.id
+    </sql>
+
+    <select id="selectEvaluationsList" parameterType="EvaluationsList" resultMap="EvaluationsResult">
+        <include refid="selectEvaluationsAccountsWorksVo"/>
+        <where>
+            <if test="reviewerName != null  and reviewerName != ''"> and reviewer_name = #{reviewerName}</if>
+            <if test="school != null "> and school = #{school}</if>
+            <if test="title != null "> and title = #{title}</if>
+            <if test="author != null "> and author = #{author}</if>
+        </where>
+    </select>
+    
+    <select id="selectEvaluationsById" parameterType="Long" resultMap="EvaluationsResult">
+        <include refid="selectEvaluationsVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertEvaluations" parameterType="Evaluations" useGeneratedKeys="true" keyProperty="id">
+        insert into evaluations
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="workId != null">work_id,</if>
+            <if test="accountId != null">account_id,</if>
+            <if test="reviewerName != null">reviewer_name,</if>
+            <if test="implementScore != null">implement_score,</if>
+            <if test="planningScore != null">planning_score,</if>
+            <if test="videoScore != null">video_score,</if>
+            <if test="trainingScore != null">training_score,</if>
+            <if test="standardsScore != null">standards_score,</if>
+            <if test="link != null">link,</if>
+            <if test="textbookScore != null">textbook_score,</if>
+            <if test="suggest != null">suggest,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="workId != null">#{workId},</if>
+            <if test="accountId != null">#{accountId},</if>
+            <if test="reviewerName != null">#{reviewerName},</if>
+            <if test="implementScore != null">#{implementScore},</if>
+            <if test="planningScore != null">#{planningScore},</if>
+            <if test="videoScore != null">#{videoScore},</if>
+            <if test="trainingScore != null">#{trainingScore},</if>
+            <if test="standardsScore != null">#{standardsScore},</if>
+            <if test="link != null">#{link},</if>
+            <if test="textbookScore != null">#{textbookScore},</if>
+            <if test="suggest != null">#{suggest},</if>
+         </trim>
+    </insert>
+
+    <update id="updateEvaluations" parameterType="Evaluations">
+        update evaluations
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="workId != null">work_id = #{workId},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="reviewerName != null">reviewer_name = #{reviewerName},</if>
+            <if test="implementScore != null">implement_score = #{implementScore},</if>
+            <if test="planningScore != null">planning_score = #{planningScore},</if>
+            <if test="videoScore != null">video_score = #{videoScore},</if>
+            <if test="trainingScore != null">training_score = #{trainingScore},</if>
+            <if test="standardsScore != null">standards_score = #{standardsScore},</if>
+            <if test="link != null">link = #{link},</if>
+            <if test="textbookScore != null">textbook_score = #{textbookScore},</if>
+            <if test="suggest != null">suggest = #{suggest},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteEvaluationsById" parameterType="Long">
+        delete from evaluations where id = #{id}
+    </delete>
+
+    <delete id="deleteEvaluationsByIds" parameterType="String">
+        delete from evaluations where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

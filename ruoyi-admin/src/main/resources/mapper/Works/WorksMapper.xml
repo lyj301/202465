@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.WorksMapper">
+    
+    <resultMap type="WorksList" id="WorksResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="author"    column="author"    />
+        <result property="accountId"    column="account_id"    />
+        <result property="teachers"    column="teachers"    />
+        <result property="course"    column="course"    />
+        <result property="link"    column="link"    />
+        <result property="contact"    column="contact"    />
+        <result property="classRecord"    column="class_record"    />
+        <result property="lessonPlanning"    column="lesson_planning"    />
+        <result property="lessonReport"    column="lesson_report"    />
+        <result property="trainingReport"    column="training_report"    />
+        <result property="standards"    column="standards"    />
+        <result property="other"    column="other"    />
+        <result property="submissionTime"    column="submission_time"    />
+        <result property="views"    column="views"    />
+        <result property="score"    column="score"    />
+        <result property="entryForm"    column="entry_form"    />
+        <result property="messageBook"    column="message_book"    />
+        <result property="school"    column="school"    />
+        <result property="scope"    column="scope"    />
+
+    </resultMap>
+
+    <sql id="selectWorksVo">
+        select id, title, author, account_id, teachers, course, link, contact, class_record, lesson_planning, lesson_report, training_report, standards, other, submission_time, views, score, entry_form, message_book from works
+    </sql>
+    <sql id="selectWorksAccountVo">
+        select works.id,accounts.school,accounts.scope, title, author, account_id, teachers, course, link, contact, class_record, lesson_planning, lesson_report, training_report, standards, other, submission_time, views, score, entry_form, message_book from works
+        LEFT JOIN accounts ON works.account_id=accounts.id
+    </sql>
+
+    <select id="selectWorksList" parameterType="WorksList" resultMap="WorksResult">
+        <include refid="selectWorksAccountVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="author != null  and author != ''"> and author = #{author}</if>
+            <if test="school != null "> and accounts.school = #{school}</if>
+        </where>
+    </select>
+    
+    <select id="selectWorksById" parameterType="Long" resultMap="WorksResult">
+        <include refid="selectWorksAccountVo"/>
+        where works.id = #{id}
+    </select>
+
+    <insert id="insertWorks" parameterType="Works">
+        insert into works
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="title != null">title,</if>
+            <if test="author != null">author,</if>
+            <if test="accountId != null">account_id,</if>
+            <if test="teachers != null">teachers,</if>
+            <if test="course != null">course,</if>
+            <if test="link != null">link,</if>
+            <if test="contact != null">contact,</if>
+            <if test="classRecord != null">class_record,</if>
+            <if test="lessonPlanning != null">lesson_planning,</if>
+            <if test="lessonReport != null">lesson_report,</if>
+            <if test="trainingReport != null">training_report,</if>
+            <if test="standards != null">standards,</if>
+            <if test="other != null">other,</if>
+            <if test="submissionTime != null">submission_time,</if>
+            <if test="views != null">views,</if>
+            <if test="score != null">score,</if>
+            <if test="entryForm != null">entry_form,</if>
+            <if test="messageBook != null">message_book,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="title != null">#{title},</if>
+            <if test="author != null">#{author},</if>
+            <if test="accountId != null">#{accountId},</if>
+            <if test="teachers != null">#{teachers},</if>
+            <if test="course != null">#{course},</if>
+            <if test="link != null">#{link},</if>
+            <if test="contact != null">#{contact},</if>
+            <if test="classRecord != null">#{classRecord},</if>
+            <if test="lessonPlanning != null">#{lessonPlanning},</if>
+            <if test="lessonReport != null">#{lessonReport},</if>
+            <if test="trainingReport != null">#{trainingReport},</if>
+            <if test="standards != null">#{standards},</if>
+            <if test="other != null">#{other},</if>
+            <if test="submissionTime != null">#{submissionTime},</if>
+            <if test="views != null">#{views},</if>
+            <if test="score != null">#{score},</if>
+            <if test="entryForm != null">#{entryForm},</if>
+            <if test="messageBook != null">#{messageBook},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWorks" parameterType="Works">
+        update works
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null">title = #{title},</if>
+            <if test="author != null">author = #{author},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="teachers != null">teachers = #{teachers},</if>
+            <if test="course != null">course = #{course},</if>
+            <if test="link != null">link = #{link},</if>
+            <if test="contact != null">contact = #{contact},</if>
+            <if test="classRecord != null">class_record = #{classRecord},</if>
+            <if test="lessonPlanning != null">lesson_planning = #{lessonPlanning},</if>
+            <if test="lessonReport != null">lesson_report = #{lessonReport},</if>
+            <if test="trainingReport != null">training_report = #{trainingReport},</if>
+            <if test="standards != null">standards = #{standards},</if>
+            <if test="other != null">other = #{other},</if>
+            <if test="submissionTime != null">submission_time = #{submissionTime},</if>
+            <if test="views != null">views = #{views},</if>
+            <if test="score != null">score = #{score},</if>
+            <if test="entryForm != null">entry_form = #{entryForm},</if>
+            <if test="messageBook != null">message_book = #{messageBook},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWorksById" parameterType="Long">
+        delete from works where id = #{id}
+    </delete>
+
+    <delete id="deleteWorksByIds" parameterType="String">
+        delete from works where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

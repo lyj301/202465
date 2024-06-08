@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.mapper.AccountsMapper">
+    
+    <resultMap type="Accounts" id="AccountsResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="school"    column="school"    />
+        <result property="identity"    column="identity"    />
+        <result property="scope"    column="scope"    />
+        <result property="userName"    column="user_name"    />
+        <result property="password"    column="password"    />
+        <result property="headImage"    column="head_image"    />
+        <result property="accountName"    column="account_name"    />
+    </resultMap>
+
+    <sql id="selectAccountsVo">
+        select id, name, school, identity, scope, user_name, password, head_image, account_name from accounts
+    </sql>
+
+    <select id="selectAccountsList" parameterType="Accounts" resultMap="AccountsResult">
+        <include refid="selectAccountsVo"/>
+        <where>  
+            <if test="school != null  and school != ''"> and school = #{school}</if>
+            <if test="identity != null  and identity != ''"> and identity = #{identity}</if>
+            <if test="scope != null  and scope != ''"> and scope = #{scope}</if>
+        </where>
+    </select>
+    
+    <select id="selectAccountsById" parameterType="Long" resultMap="AccountsResult">
+        <include refid="selectAccountsVo"/>
+        where id = #{id}
+    </select>
+    <select id="selectAccountsByUsername" resultType="com.ruoyi.domain.Accounts">
+        <include refid="selectAccountsVo"/>
+        where user_name = #{username}
+    </select>
+
+    <insert id="insertAccounts" parameterType="Accounts" useGeneratedKeys="true" keyProperty="id">
+        insert into accounts
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="school != null and school != ''">school,</if>
+            <if test="identity != null and identity != ''">identity,</if>
+            <if test="scope != null and scope != ''">scope,</if>
+            <if test="userName != null and userName != ''">user_name,</if>
+            <if test="password != null and password != ''">password,</if>
+            <if test="headImage != null">head_image,</if>
+            <if test="accountName != null">account_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="school != null and school != ''">#{school},</if>
+            <if test="identity != null and identity != ''">#{identity},</if>
+            <if test="scope != null and scope != ''">#{scope},</if>
+            <if test="userName != null and userName != ''">#{userName},</if>
+            <if test="password != null and password != ''">#{password},</if>
+            <if test="headImage != null">#{headImage},</if>
+            <if test="accountName != null">#{accountName},</if>
+         </trim>
+    </insert>
+
+    <update id="updateAccounts" parameterType="Accounts">
+        update accounts
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="school != null and school != ''">school = #{school},</if>
+            <if test="identity != null and identity != ''">identity = #{identity},</if>
+            <if test="scope != null and scope != ''">scope = #{scope},</if>
+            <if test="userName != null and userName != ''">user_name = #{userName},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="headImage != null">head_image = #{headImage},</if>
+            <if test="accountName != null">account_name = #{accountName},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteAccountsById" parameterType="Long">
+        delete from accounts where id = #{id}
+    </delete>
+
+    <delete id="deleteAccountsByIds" parameterType="String">
+        delete from accounts where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
