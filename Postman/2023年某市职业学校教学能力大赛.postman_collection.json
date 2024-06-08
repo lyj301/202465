@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "c1ae9b42-e6b9-43bc-b2a2-48a26c4ba84f",
+		"name": "2023年某市职业学校教学能力大赛",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36013529"
+	},
+	"item": [
+		{
+			"name": "管理端",
+			"item": [
+				{
+					"name": "账号管理",
+					"item": [
+						{
+							"name": "修改账号管理",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6Ijg1NDZmMWRjLWRhMGQtNDRmZC04YjRhLWFjNWE1Nzg2NThhMCJ9.QV6fJR5NxDGw3XEr9DimiggcRIguQmPGAgF84klppyihdtofGZKLPYNSbF1cjSuQR8U-TNx5Jr9EZSs0vfW8-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 1,\r\n  \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/Account/account",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询账号管理列表",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "identity",
+											"value": "评委",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "scope",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8080/Account/account/list",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增用户",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"identity\": \"1\",\r\n  \"name\": \"mky\",\r\n  \"password\": \"123456\",\r\n  \"school\": \"安徽大学\",\r\n  \"scope\": \"2\",\r\n  \"userName\": \"mky225\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/Account/account",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除账号管理",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/Account/account/5",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account",
+										"5"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "根据ID查询账户信息",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Account/account/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "导出账号管理列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Account/account/export",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Account",
+										"account",
+										"export"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "作品管理",
+					"item": [
+						{
+							"name": "查询作品管理列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Works/works/list?school=安徽工业大学",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Works",
+										"works",
+										"list"
+									],
+									"query": [
+										{
+											"key": "school",
+											"value": "安徽工业大学"
+										},
+										{
+											"key": "author",
+											"value": "lyj",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "互联网",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "导出作品列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImI4Mjg1ZTkwLTU1NzItNDRiMy04YmYzLThlYWQ4NWU1ZjFmOCJ9.5RO-FDDw54sO1c8bapP92LJ-5JAmsdqM-qfuL2K9RS4XSV9e2FH5IdG1uQfzxHMrTrPvhbiwmSs79CDNPTEulg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Works/works/export",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Works",
+										"works",
+										"export"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "评价管理",
+					"item": [
+						{
+							"name": "查询评价列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjlkNDViMjdhLWI1NzMtNDczZC05NTQ3LWQyYjcxMmFhYTRmMyJ9.7k28jk62csXTLEA19yZpjFTVdUCtHmQCep_2hBb4HvCB_6Q7CtKMdtjLUFEI4a46n489ktROeedahlRf9CB9Pg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Evaluations/evaluations/list",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Evaluations",
+										"evaluations",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "导出评价管理列表",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImI4Mjg1ZTkwLTU1NzItNDRiMy04YmYzLThlYWQ4NWU1ZjFmOCJ9.5RO-FDDw54sO1c8bapP92LJ-5JAmsdqM-qfuL2K9RS4XSV9e2FH5IdG1uQfzxHMrTrPvhbiwmSs79CDNPTEulg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/Evaluations/evaluations/export",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Evaluations",
+										"evaluations",
+										"export"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "后台管理系统所使用的接口，访问前需获得后台管理者登录后获取的授权TOKEN"
+		},
+		{
+			"name": "用户端",
+			"item": [
+				{
+					"name": "用户模块",
+					"item": [
+						{
+							"name": "用户登录",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"lyj031\",\r\n    \"password\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/User/account/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"account",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改密码",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\" : \"1\",\r\n    \"oldUsername\" : \"123456\",\r\n    \"newPassword1\" : \"123456\",\r\n    \"newPassword2\" : \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/User/account",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "退出",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/User/account/logout",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"account",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "作品模块",
+					"item": [
+						{
+							"name": "根据ID查询作品",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/User/word/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"word",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增作品",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/User/word",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"word"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改作品",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/User/word",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"word"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除作品",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/User/word",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"word"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "评价模块",
+					"item": [
+						{
+							"name": "查询评价管理列表",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"url": {
+									"raw": "localhost:8080/User/evaluation/list",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"evaluation",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改评价",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MTc3ODQ0MDIsInVzZXJJZCI6MX0.f96MM21joQSID3iqBB5Jw_vV3IA3iJnTjVWM1JS76hQ"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"implementScore\": 2,\r\n    \"planningScore\": 5,\r\n    \"videoScore\": 1,\r\n    \"trainingScore\": 2,\r\n    \"standardsScore\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/User/evaluation",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"User",
+										"evaluation"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "教师用户端所使用的接口，接口访问需使用用户登录后所获取的TOKEN"
+		}
+	]
+}
